@@ -21,6 +21,7 @@ const App = () => {
     }
   }, []);
 
+  // hahahsd
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
