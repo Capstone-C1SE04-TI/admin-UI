@@ -1,4 +1,3 @@
-export * as authService from './authService';
-export * as marketOverviewService from './marketOverviewService';
-export * as coinDetailService from './coinDetailService';
-export * as sharkWalletService from './sharkWalletService';
+export * as userService from './userService';
+export * as athSercie from './userService';
+
