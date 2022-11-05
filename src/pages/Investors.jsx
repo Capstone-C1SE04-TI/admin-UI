@@ -4,7 +4,6 @@ import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page 
 import { employeesGrid } from '../data/dummy';
 import { Header } from '../components';
 import  {userService}  from '~/services';
-import { getUsers } from '~/services/userService';
 
 const Investors = () => {
   const [invests, setinvests] = useState([]);
@@ -14,7 +13,7 @@ const Investors = () => {
         const fetchApi = async () => {
             const response = await userService.getUsers();
             setinvests(response)
-            console.log(response);
+            // console.log(response);
         };
         fetchApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
