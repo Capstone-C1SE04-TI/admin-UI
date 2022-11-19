@@ -1,6 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
-
+import { authService } from '~/services';
 import { Button } from '~/components';
 import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
@@ -8,6 +9,18 @@ import avatar from '../data/avatar.jpg';
 
 const UserProfile = () => {
   const { currentColor } = useStateContext();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    const fetchApi = async () => {
+      const response = await authService.signOut();
+      if (response.message === 'successfully') {
+        localStorage.removeItem('userInfo');
+        navigate('/sign-in ');
+      }
+    };
+    fetchApi();
+  };
 
   return (
     <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -51,8 +64,8 @@ const UserProfile = () => {
           </div>
         ))}
       </div>
-      <div className="mt-5">
-        <Button
+      <div className="mt-5" onClick={handleLogOut}>
+        <Button 
           color="white"
           bgColor={currentColor}
           text="Logout"
