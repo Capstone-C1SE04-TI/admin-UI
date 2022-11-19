@@ -9,12 +9,14 @@ import {
   Investors,
   Stacked,
   Pie,
-
   ColorMapping,
 } from "./pages";
 import "./App.css";
 
 import { useStateContext } from "./contexts/ContextProvider";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const {
@@ -40,6 +42,18 @@ const App = () => {
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
       <BrowserRouter>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <TooltipComponent content="Settings" position="Top">
@@ -86,7 +100,7 @@ const App = () => {
 
                 {/* charts  */}
                 <Route path="/pie" element={<Pie />} />
-           
+
                 <Route path="/color-mapping" element={<ColorMapping />} />
                 <Route path="/stacked" element={<Stacked />} />
               </Routes>

@@ -8,3 +8,13 @@ export const signOut = async () => {
         return error.response.data;
     }
 };
+
+
+export const signIn = async (data) => {
+  try {
+    const response = await httpRequest.post("/admin/signin", data);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
