@@ -14,11 +14,15 @@ const Investors = () => {
         const fetchApi = async () => {
             const response = await userService.getUsers();
             setinvests(response)
-            console.log(response);
+          
         };
         fetchApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const handleClick = () => {
+    console.log("click");
+  }
+
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Investors" />
@@ -33,7 +37,7 @@ const Investors = () => {
       >
         <ColumnsDirective>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          {employeesGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
+          {employeesGrid.map((item, index) => <ColumnDirective key={index} {...item} onClick={handleClick} />)}
         </ColumnsDirective>
         <Inject services={[Search, Page]} />
 

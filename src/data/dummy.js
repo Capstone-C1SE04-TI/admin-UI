@@ -54,7 +54,7 @@ export const gridOrderStatus = (props) => (
 
 const gridInvestorProfile = (props) => (
   <div className="flex items-center gap-2">
-    <img className="rounded-full w-10 h-10" src={useDefault} alt="employee" />
+    <img className="rounded-full w-10 h-10" src={props.avatar} alt="employee" />
     <p>{props.username}</p>
   </div>
 );
@@ -83,7 +83,7 @@ const gridInvestorUpdated = (props) => (
 );
 const gridInvestorId = (props) => (
   <div className="flex items-center justify-center gap-2">
-    <span>{props.id}</span>
+    <span>{props.userId}</span>
   </div>
 );
 
