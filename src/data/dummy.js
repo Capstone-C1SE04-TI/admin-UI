@@ -29,9 +29,6 @@ import product4 from "./product4.jpg";
 import product5 from "./product5.jpg";
 import product6 from "./product6.jpg";
 import product7 from "./product7.jpg";
-
-import useDefault from "./userDefault.jpg";
-
 export const gridOrderImage = (props) => (
   <div>
     <img
@@ -87,6 +84,24 @@ const gridInvestorId = (props) => (
   </div>
 );
 
+const gridAction = (props) => (
+  <div className="flex items-center justify-center gap-2">
+    <button
+      className="text-white active:bg-pink-600 font-bold uppercase p-1  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button"
+      style={{ backgroundColor: "rgb(251, 150, 120)" }}
+    >
+      Delete
+    </button>
+    <button
+      className="text-white active:bg-pink-600 font-bold uppercase p-1  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button"
+      style={{ backgroundColor: "rgb(3, 201, 215)" }}
+    >
+      Update
+    </button>
+  </div>
+);
 export const barChartData = [
   [
     { x: "USA", y: 46 },
@@ -163,6 +178,7 @@ export const ColorMappingPrimaryYAxis = {
 };
 
 export const employeesGrid = [
+
   {
     headerText: "Investor",
     width: "150",
