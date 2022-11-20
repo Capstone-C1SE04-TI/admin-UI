@@ -1,4 +1,14 @@
-const TableDataItem = ({ value }) => {
+const TableDataItem = ({ value, checkedUser, onCheckedUser }) => {
+  const handleChange = () => {
+    onCheckedUser((pre) => {
+      const checked = checkedUser.includes(value.userId);
+      if (checked) {
+        return checkedUser.filter((userId) => value.userId !== userId);
+      } else return [...pre, value.userId];
+    });
+
+  };
+
   return (
     <tr>
       <td className="py-3 pl-4">
@@ -6,6 +16,8 @@ const TableDataItem = ({ value }) => {
           <input
             type="checkbox"
             className="text-blue-600 border-gray-200 rounded focus:ring-blue-500"
+            checked={checkedUser.includes(value.userId)}
+            onChange={handleChange}
           />
           <label htmlFor="checkbox" className="sr-only">
             Checkbox
