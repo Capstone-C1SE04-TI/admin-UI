@@ -1,6 +1,13 @@
+import { useEffect, useState } from "react";
+import ToastCustomize from "~/helpers/ToastCustomize";
+import { userService } from "~/services";
 import TableDataItem from "./TableDataItem";
+import ModalNotify from "./ModalNotify";
 
-const TableData = ({ data }) => {
+const TableData = ({ data, onChangeData }) => {
+  const [checkedUser, setCheckedUser] = useState([]);
+  const [isAllChecked, setIsCheckedAll] = useState(false);
+
   const renderSearch = () => {
     return (
       <form>
@@ -70,8 +77,85 @@ const TableData = ({ data }) => {
     );
   };
 
+  const renderDelete = () => {
+    return (
+      <div className="flex items-center space-x-2">
+        <div className="relative">
+          <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1">
+            <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
+              <div>
+                <img
+                  src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/l36ouVTLKY-.png"
+                  alt=""
+                />
+              </div>
+              <div className="hidden sm:block">Delete</div>
+            </span>
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    if (checkedUser.length > 0) {
+      if (data.length === checkedUser.length) {
+        setIsCheckedAll(true);
+      } else {
+        setIsCheckedAll(false);
+      }
+
+      // handleChangeCheckboxAll()
+    }
+  }, [checkedUser]);
+
+  const handleChangeCheckboxAll = () => {
+    if (!isAllChecked) {
+      let allUserId = data.map((user) => {
+        return user.userId;
+      });
+      setCheckedUser(allUserId);
+      setIsCheckedAll(!isAllChecked);
+    } else {
+      setIsCheckedAll(!isAllChecked);
+      setCheckedUser([]);
+    }
+  };
+  // console.log({ checkedUser, isAllChecked });
+  const handleDelete = async () => {
+    const response = await userService.deleteUsers({
+      ids: checkedUser,
+    });
+
+    if (!response.error) {
+      const newUSer = data.filter((user) => !checkedUser.includes(user.userId));
+      onChangeData(newUSer);
+      ToastCustomize("Success deleted");
+    } else {
+      ToastCustomize("User not found");
+    }
+  };
+
+  const [isShowModalDelete, setIsShowModalDelete] = useState(false);
+
+  const openModal = () => {
+    setIsShowModalDelete(true);
+  };
+
+  const closeModal = () => {
+    setIsShowModalDelete(false);
+  };
+
   return (
     <div className="flex flex-col">
+      <ModalNotify
+        title="Delete user"
+        description="Are you sure to delete this users ?"
+        actionName="Delete"
+        requestCloseModal={closeModal}
+        isShowModal={isShowModalDelete}
+        onAcceptACtion={handleDelete}
+      />
       <div className="overflow-x-auto">
         <div className="flex justify-between py-3 pl-2">
           {renderSearch()}
@@ -80,19 +164,11 @@ const TableData = ({ data }) => {
         </div>
 
         <div className="p-1.5 w-full inline-block align-middle">
-          <div className="flex items-center pb-4 cursor-pointer">
-            <svg
-              className="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx={12} cy={12} r={11} />
-              <path
-                d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9"
-                fill="none"
-              />
-            </svg>
-            <p className="ml-4">Delete</p>
+          <div
+            className="flex items-center pb-4 cursor-pointer"
+            onClick={openModal}
+          >
+            {renderDelete()}
           </div>
           <div className="overflow-hidden border rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
@@ -101,9 +177,11 @@ const TableData = ({ data }) => {
                   <th scope="col" className="py-3 pl-4">
                     <div className="flex items-center h-5">
                       <input
+                        checked={isAllChecked}
+                        onChange={handleChangeCheckboxAll}
                         id="checkbox-all"
                         type="checkbox"
-                        className="text-blue-600 border-gray-200 rounded focus:ring-blue-500"
+                        className="text-blue-600 border-gray-200 rounded focus:ring-blue-500 hover:border-slate-400"
                       />
                       <label htmlFor="checkbox" className="sr-only">
                         Checkbox
@@ -150,9 +228,14 @@ const TableData = ({ data }) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {data.map((item, index) => {
-                  return <TableDataItem key={index} value={item} />;
-                })}
+                {data.map((item, index) => (
+                  <TableDataItem
+                    key={index}
+                    value={item}
+                    checkedUser={checkedUser}
+                    onCheckedUser={setCheckedUser}
+                  />
+                ))}
               </tbody>
             </table>
           </div>
