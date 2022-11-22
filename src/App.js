@@ -10,6 +10,8 @@ import {
   Stacked,
   Pie,
   ColorMapping,
+  Admin,
+  UserInfo,
 } from "./pages";
 import "./App.css";
 
@@ -97,6 +99,8 @@ const App = () => {
                 {/* pages  */}
 
                 <Route path="/investors" element={<Investors />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/investor/:id" element={<UserInfo />} />
 
                 {/* charts  */}
                 <Route path="/pie" element={<Pie />} />

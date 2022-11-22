@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const TableDataItem = ({ value, checkedUser, onCheckedUser }) => {
   const handleChange = () => {
     onCheckedUser((pre) => {
@@ -8,9 +10,9 @@ const TableDataItem = ({ value, checkedUser, onCheckedUser }) => {
     });
 
   };
-
+const navigate = useNavigate()
   return (
-    <tr>
+    <tr onClick={() => navigate(`/investor/${value.userId}`)}>
       <td className="py-3 pl-4">
         <div className="flex items-center h-5">
           <input
@@ -27,7 +29,12 @@ const TableDataItem = ({ value, checkedUser, onCheckedUser }) => {
       <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
         {value.userId}
       </td>
-      <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+      <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap flex items-center gap-2">
+        <img
+          className="rounded-full w-10 h-10"
+          src={value.avatar}
+          alt="employee"
+        />
         {value.username}
       </td>
       <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
