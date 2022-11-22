@@ -51,7 +51,7 @@ export const gridOrderStatus = (props) => (
 
 const gridInvestorProfile = (props) => (
   <div className="flex items-center gap-2">
-    <img className="rounded-full w-10 h-10" src={props.avatar} alt="employee" />
+    <img className="rounded-full w-10 h-10" src={avatar} alt="employee" />
     <p>{props.username}</p>
   </div>
 );
@@ -79,8 +79,8 @@ const gridInvestorUpdated = (props) => (
   </div>
 );
 const gridInvestorId = (props) => (
-  <div className="flex items-center justify-center gap-2">
-    <span>{props.userId}</span>
+  <div className="flex items-center gap-2">
+    <span>{props.id}</span>
   </div>
 );
 
@@ -178,12 +178,19 @@ export const ColorMappingPrimaryYAxis = {
 };
 
 export const employeesGrid = [
-
   {
-    headerText: "Investor",
+    field: "HireDate",
+    headerText: "Id",
+    width: "135",
+    format: "yMd",
+    textAlign: "left",
+    template: gridInvestorId,
+  },
+  {
+    headerText: "Admin",
     width: "150",
     template: gridInvestorProfile,
-    textAlign: "Center",
+    textAlign: "left",
   },
 
   {
@@ -193,36 +200,21 @@ export const employeesGrid = [
     textAlign: "Center",
     template: gridInvestorEmail,
   },
-  {
-    headerText: "Phone Number",
-    width: "120",
-    textAlign: "Center",
-    template: gridInvestorPhoneNumnber,
-  },
 
-  {
-    field: "HireDate",
-    headerText: "Created Date",
-    width: "135",
-    format: "yMd",
-    textAlign: "Center",
-    template: gridInvestorCreated,
-  },
-
-  {
-    field: "ReportsTo",
-    headerText: "Updated Date",
-    width: "120",
-    textAlign: "Center",
-    template: gridInvestorUpdated,
-  },
-  {
-    field: "Investor Id",
-    headerText: "Employee ID",
-    width: "125",
-    textAlign: "Center",
-    template: gridInvestorId,
-  },
+  // {
+  //   field: "ReportsTo",
+  //   headerText: "Updated Date",
+  //   width: "120",
+  //   textAlign: "Center",
+  //   template: gridInvestorUpdated,
+  // },
+  // {
+  //   field: "Investor Id",
+  //   headerText: "Employee ID",
+  //   width: "125",
+  //   textAlign: "Center",
+  //   template: gridInvestorId,
+  // },
 ];
 
 export const links = [
