@@ -174,8 +174,8 @@ const TableData = ({ data, onChangeData }) => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="py-3 pl-4">
-                    <div className="flex items-center h-5">
+                  <th scope="col" className="py-3">
+                    <div className="flex items-center justify-center h-5">
                       <input
                         checked={isAllChecked}
                         onChange={handleChangeCheckboxAll}
@@ -216,7 +216,7 @@ const TableData = ({ data, onChangeData }) => {
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                   >
-                    Sharks followed quantity
+                    Sharks followed
                   </th>
 
                   <th

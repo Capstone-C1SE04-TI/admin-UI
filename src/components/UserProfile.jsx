@@ -9,12 +9,13 @@ import ToastCustomize from "~/helpers/ToastCustomize";
 
 const UserProfile = () => {
   const { currentColor, setCurrentUserLogin } = useStateContext();
-
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const handleLogOut = () => {
     const fetchApi = async () => {
       const response = await authService.signOut();
       if (response.message === "successfully") {
         localStorage.removeItem("currentUser");
+        localStorage.removeItem("userInfo");
         setCurrentUserLogin("");
         ToastCustomize("Sign out success")
       }
@@ -43,7 +44,7 @@ const UserProfile = () => {
         <div>
           <p className="font-semibold text-xl dark:text-gray-200">
             {" "}
-            Michael Roberts{" "}
+            {userInfo.username}{" "}
           </p>
           <p className="text-gray-500 text-sm dark:text-gray-400">
             {" "}
@@ -51,7 +52,7 @@ const UserProfile = () => {
           </p>
           <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
             {" "}
-            info@shop.com{" "}
+             {userInfo.email}{" "}
           </p>
         </div>
       </div>
