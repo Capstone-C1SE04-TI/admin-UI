@@ -64,14 +64,14 @@ const navigate = useNavigate()
       >
         {value.sharksFollowed.length}
       </td>
-      <td
+      {/* <td
         className="px-6 py-4 text-sm font-medium text-center whitespace-nowrap"
         onClick={handleNavigate}
       >
         <a className="text-green-500 hover:text-green-700" href="#">
           Edit
         </a>
-      </td>
+      </td> */}
     </tr>
   );
 };
