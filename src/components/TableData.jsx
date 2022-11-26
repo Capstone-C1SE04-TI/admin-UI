@@ -82,7 +82,10 @@ const TableData = ({ data, onChangeData }) => {
       <div className="flex items-center space-x-2">
         <div className="relative">
           <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1">
-            <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
+            <span
+              className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border  rounded-md sm:py-2"
+              style={{ backgroundColor: "rgba(254, 44, 85, 1)", color: "#fff" }}
+            >
               <div>
                 <img
                   src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/l36ouVTLKY-.png"
@@ -219,12 +222,12 @@ const TableData = ({ data, onChangeData }) => {
                     Sharks followed
                   </th>
 
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                   >
                     Update
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
