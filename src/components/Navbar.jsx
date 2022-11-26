@@ -61,6 +61,7 @@ const Navbar = () => {
   const closeModal = () => {
      setIsShowModal(false);
   }
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   return (
@@ -102,7 +103,7 @@ const Navbar = () => {
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{" "}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    Michael
+                    {userInfo.username}
                   </span>
                 </p>
                 <MdKeyboardArrowDown className="text-gray-400 text-14" />
