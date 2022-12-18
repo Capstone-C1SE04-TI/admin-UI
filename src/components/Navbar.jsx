@@ -76,6 +76,7 @@ const Navbar = () => {
         {currentUser || currentUserLogin ? (
           <>
             {" "}
+            <button className='text-md font-semibold m-1 rounded-lg border-2 text-[#03C9D7] border-[#03C9D7] ease-in py-1 px-2 hover:bg-sky-700 '>Connect Wallet</button>
             <NavButton
               title="Chat"
               dotColor="#03C9D7"
