@@ -172,9 +172,9 @@ const TableData = ({ data, onChangeData }) => {
       />
       <div className="overflow-x-auto">
         <div className="flex justify-between py-3 pl-2">
-          {renderSearch()}
+          {/* {renderSearch()} */}
 
-          {renderFilter()}
+          {/* {renderFilter()} */}
         </div>
 
         <div className="p-1.5 w-full inline-block align-middle">
