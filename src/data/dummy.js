@@ -231,15 +231,14 @@ export const links = [
   {
     title: "Pages",
     links: [
-
       {
         name: "investors",
-        to: '',
+        to: "",
         icon: <IoMdContacts />,
       },
       {
         name: "Admin",
-        to: 'admin',
+        to: "admin",
         icon: <RiContactsLine />,
       },
     ],

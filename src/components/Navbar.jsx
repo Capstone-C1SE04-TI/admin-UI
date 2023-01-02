@@ -156,11 +156,12 @@ const Navbar = () => {
     setIsShowModal(true);
   };
   const closeModal = () => {
-    setIsShowModal(false);
-  };
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+     setIsShowModal(false);
+  }
+  const adminInfo = JSON.parse(localStorage.getItem("adminInfo"));
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const currentUser = JSON.parse(localStorage.getItem('currentAdmin'));
+  console.log({ currentUserLogin });
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton
@@ -170,7 +171,7 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
       <div className="flex">
-        {currentUser || currentUserLogin ? (
+        {currentUserLogin===true ? (
           <>
             {" "}
             {
@@ -220,7 +221,7 @@ const Navbar = () => {
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{" "}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    {userInfo.username}
+                    {adminInfo.username}
                   </span>
                 </p>
                 <MdKeyboardArrowDown className="text-gray-400 text-14" />
@@ -237,12 +238,11 @@ const Navbar = () => {
             Sign In
           </button>
         )}
-
         <Modal showModal={isShowModal} requestCloseModal={closeModal} />
         {isClicked.cart && <Cart />}
         {isClicked.chat && <Chat />}
         {isClicked.notification && <Notification />}
-        {isClicked.userProfile && <UserProfile />}
+        {currentUserLogin===true && isClicked.userProfile && <UserProfile />} 
       </div>
     </div>
   );

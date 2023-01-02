@@ -5,8 +5,9 @@ import { useStateContext } from "~/contexts/ContextProvider";
 
 const Investors = () => {
   const [investors, setInvestors] = useState([]);
+
   const { currentUserLogin } = useStateContext();
-  console.log({ currentUserLogin });
+
   useEffect(() => {
     const fetchApi = async () => {
       if (currentUserLogin) {
@@ -17,8 +18,7 @@ const Investors = () => {
       }
       // console.log(response);
     };
-
-    fetchApi();
+     fetchApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUserLogin]);
 
@@ -31,7 +31,7 @@ const Investors = () => {
       <Header category="Page" title="Investors" />
       {investors.length > 0 && (
         <TableData data={investors} onChangeData={handleSetNewUser} />
-      )}
+      )}  
     </div>
   );
 };
