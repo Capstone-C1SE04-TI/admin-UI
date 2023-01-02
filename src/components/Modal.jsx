@@ -31,8 +31,8 @@ export default function Modal({ showModal = false, requestCloseModal }) {
     const response = await authService.signIn(formValue)
     console.log({ response });
     if (!response.error) {
-      localStorage.setItem("currentUser", true);
-      localStorage.setItem("userInfo",JSON.stringify(response.user) );
+      localStorage.setItem("currentAdmin", true);
+      localStorage.setItem("adminInfo",JSON.stringify(response.user) );
       setCurrentUserLogin(true);
       dispatch(userSlice.actions.statusUserLogin("userName"));
       ToastCustomize("Login success");

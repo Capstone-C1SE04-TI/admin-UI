@@ -61,9 +61,9 @@ const Navbar = () => {
   const closeModal = () => {
      setIsShowModal(false);
   }
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const adminInfo = JSON.parse(localStorage.getItem("adminInfo"));
 
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const currentUser = JSON.parse(localStorage.getItem('currentAdmin'));
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton
@@ -103,7 +103,7 @@ const Navbar = () => {
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{" "}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    {userInfo.username}
+                    {adminInfo.username}
                   </span>
                 </p>
                 <MdKeyboardArrowDown className="text-gray-400 text-14" />

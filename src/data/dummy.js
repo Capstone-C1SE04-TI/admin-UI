@@ -236,10 +236,10 @@ export const links = [
         name: "investors",
         icon: <IoMdContacts />,
       },
-      {
-        name: "Admin",
-        icon: <RiContactsLine />,
-      },
+      // {
+      //   name: "Admin",
+      //   icon: <RiContactsLine />,
+      // },
     ],
   },
   {
