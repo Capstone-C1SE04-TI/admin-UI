@@ -14,20 +14,27 @@ import {
   Filter,
 } from "@syncfusion/ej2-react-grids";
 import { employeesGrid } from "~/data/dummy";
+import { useStateContext } from "~/contexts/ContextProvider";
 
 const Admin = () => {
   const [investors, setInvestors] = useState([]);
   const selectionsettings = { persistSelection: true };
   const editing = { allowDeleting: true, allowEditing: true };
+  const { currentUserLogin } = useStateContext();
+
   useEffect(() => {
     const fetchApi = async () => {
-      const response = await userService.getAdmin();
-      setInvestors(response);
+      if (currentUserLogin) {
+        const response = await userService.getAdmin();
+        setInvestors(response);
+      } else {
+        setInvestors([]);
+      }
       // console.log(response);
     };
     fetchApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentUserLogin]);
 
   const handleSetNewUser = (newUser) => {
     setInvestors(newUser);
