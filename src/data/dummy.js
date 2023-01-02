@@ -218,48 +218,50 @@ export const employeesGrid = [
 ];
 
 export const links = [
-  {
-    title: "Dashboard",
-    links: [
-      {
-        name: "Home",
-        icon: <FiShoppingBag />,
-      },
-    ],
-  },
+  // {
+  //   title: "Dashboard",
+  //   links: [
+  //     {
+  //       name: "Home",
+  //       icon: <FiShoppingBag />,
+  //     },
+  //   ],
+  // },
 
   {
     title: "Pages",
     links: [
-   
+
       {
         name: "investors",
+        to: '',
         icon: <IoMdContacts />,
       },
       {
         name: "Admin",
+        to: 'admin',
         icon: <RiContactsLine />,
       },
     ],
   },
-  {
-    title: "Charts",
-    links: [
-      {
-        name: "pie",
-        icon: <FiPieChart />,
-      },
-      {
-        name: "color-mapping",
-        icon: <BsBarChart />,
-      },
+  // {
+  //   title: "Charts",
+  //   links: [
+  //     {
+  //       name: "pie",
+  //       icon: <FiPieChart />,
+  //     },
+  //     {
+  //       name: "color-mapping",
+  //       icon: <BsBarChart />,
+  //     },
 
-      {
-        name: "stacked",
-        icon: <AiOutlineBarChart />,
-      },
-    ],
-  },
+  //     {
+  //       name: "stacked",
+  //       icon: <AiOutlineBarChart />,
+  //     },
+  //   ],
+  // },
 ];
 
 export const cartData = [

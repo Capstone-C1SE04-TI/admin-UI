@@ -17,7 +17,7 @@ const UserProfile = () => {
         localStorage.removeItem("currentUser");
         localStorage.removeItem("userInfo");
         setCurrentUserLogin("");
-        ToastCustomize("Sign out success")
+        ToastCustomize("Sign out success");
       }
     };
     fetchApi();
@@ -52,11 +52,11 @@ const UserProfile = () => {
           </p>
           <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
             {" "}
-             {userInfo.email}{" "}
+            {userInfo.email}{" "}
           </p>
         </div>
       </div>
-      <div>
+      {/* <div>
         {userProfileData.map((item, index) => (
           <div
             key={index}
@@ -79,7 +79,7 @@ const UserProfile = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
       <div className="mt-5" onClick={handleLogOut}>
         <Button
           color="white"

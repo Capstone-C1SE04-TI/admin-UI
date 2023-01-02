@@ -7,7 +7,16 @@ import ModalNotify from "./ModalNotify";
 const TableData = ({ data, onChangeData }) => {
   const [checkedUser, setCheckedUser] = useState([]);
   const [isAllChecked, setIsCheckedAll] = useState(false);
-
+  const [textSearch, setTextSearch] = useState("");
+  console.log({ data });
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(textSearch);
+  //   const newData = data.filter((investor) =>
+  //     investor.username.includes(textSearch)
+  //   );
+  //   onChangeData(newData);
+  // };
   const renderSearch = () => {
     return (
       <form>
@@ -41,6 +50,8 @@ const TableData = ({ data, onChangeData }) => {
             className="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search"
             required
+            value={textSearch}
+            onChange={(e) => setTextSearch(e.target.value)}
           />
         </div>
       </form>
@@ -52,7 +63,7 @@ const TableData = ({ data, onChangeData }) => {
       <div className="flex items-center space-x-2">
         <div className="relative">
           <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1">
-            <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
+            {/* <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +81,7 @@ const TableData = ({ data, onChangeData }) => {
                 </svg>
               </div>
               <div className="hidden sm:block">Filters</div>
-            </span>
+            </span> */}
           </button>
         </div>
       </div>
