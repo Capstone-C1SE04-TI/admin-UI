@@ -93,12 +93,12 @@ const App = () => {
 
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={<Ecommerce />} />
+                <Route path="/" element={<Investors />} />
                 <Route path="/ecommerce" element={<Ecommerce />} />
 
                 {/* pages  */}
 
-                <Route path="/investors" element={<Investors />} />
+                {/* <Route path="/investors" element={<Investors />} /> */}
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/investor/:id" element={<UserInfo />} />
 

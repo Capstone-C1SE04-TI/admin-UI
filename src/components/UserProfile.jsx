@@ -17,7 +17,7 @@ const UserProfile = () => {
         localStorage.removeItem("currentAdmin");
         localStorage.removeItem("adminInfo");
         setCurrentUserLogin("");
-        ToastCustomize("Sign out success")
+        ToastCustomize("Sign out success");
       }
     };
     fetchApi();
@@ -56,7 +56,7 @@ const UserProfile = () => {
           </p>
         </div>
       </div>
-      <div>
+      {/* <div>
         {userProfileData.map((item, index) => (
           <div
             key={index}
@@ -79,7 +79,7 @@ const UserProfile = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
       <div className="mt-5" onClick={handleLogOut}>
         <Button
           color="white"
