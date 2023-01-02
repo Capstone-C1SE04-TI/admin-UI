@@ -5,30 +5,30 @@ import { useStateContext } from "~/contexts/ContextProvider";
 import ToastCustomize from "~/helpers/ToastCustomize";
 import { userSelector } from "~/modules/user";
 import userSlice from "~/modules/user/userSlice";
-import { authService } from '~/services';
+import { authService } from "~/services";
 
-export default function Modal({ showModal = false, requestCloseModal }) {
-    const [formValue, setFormValue] = React.useState({
-      username: "",
-      password: "",
-    });
+export default function Modal({ showModal = true, requestCloseModal }) {
+  const [formValue, setFormValue] = React.useState({
+    username: "",
+    password: "",
+  });
   const { setCurrentUserLogin } = useStateContext();
 
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        setFormValue((pre) => {
-            return {
-                ...pre,
-                [name]: value
-            }
-        })
-    }
-    const dispatch = useDispatch()
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValue((pre) => {
+      return {
+        ...pre,
+        [name]: value,
+      };
+    });
+  };
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const response = await authService.signIn(formValue)
+    const response = await authService.signIn(formValue);
     console.log({ response });
     if (!response.error) {
       localStorage.setItem("currentAdmin", true);
@@ -37,16 +37,18 @@ export default function Modal({ showModal = false, requestCloseModal }) {
       dispatch(userSlice.actions.statusUserLogin("userName"));
       ToastCustomize("Login success");
       requestCloseModal();
+    } else {
+      ToastCustomize("failed authorization");
     }
-    else {
-        ToastCustomize("failed authorization");
-    }
-    }
+  };
   return (
     <>
       {showModal ? (
         <>
-          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div
+            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div
                 className="border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none"

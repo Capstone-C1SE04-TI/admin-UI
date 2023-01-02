@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Header, TableData } from "../components";
 import { userService } from "~/services";
+import { useStateContext } from "~/contexts/ContextProvider";
 
 const Investors = () => {
   const [investors, setInvestors] = useState([]);
-  const currentUser = JSON.parse(localStorage.getItem("currentAdmin"));
+
+  const { currentUserLogin } = useStateContext();
 
   useEffect(() => {
     const fetchApi = async () => {
-      const response = await userService.getUsers();
-      setInvestors(response);
+      if (currentUserLogin) {
+        const response = await userService.getUsers();
+        setInvestors(response);
+      } else {
+        setInvestors([]);
+      }
       // console.log(response);
     };
-    if (currentUser) fetchApi();
+     fetchApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentUserLogin]);
 
   const handleSetNewUser = (newUser) => {
     setInvestors(newUser);
